@@ -52,6 +52,27 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('header').classList.remove('promotion_opened')
         })
     })
+    // THANKS FORM BUTTON
+    let tBtn = document.querySelector('.promotion_form button')
+    tBtn.addEventListener('click',function(e){
+        e.preventDefault();
+        document.querySelector('.promotion .thanks_form').classList.add('show')
+        document.querySelector('.promotion_form').classList.add('display_none');
+        document.querySelector('.promotion_form_links').classList.add('display_none')
+    })
+    let allPromotionCLoseBtn = document.querySelectorAll('.thanks_close_btn')
+    allPromotionCLoseBtn.forEach(allPromotionCLoseBtn => {
+        allPromotionCLoseBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            promotionMenu.classList.remove('show');
+            document.body.style.overflow = 'inherit';
+            document.querySelector('header').classList.remove('promotion_opened')
+            document.querySelector('.promotion .thanks_form').classList.remove('show')
+            document.querySelector('.promotion_form').classList.remove('display_none');
+            document.querySelector('.promotion_form_links').classList.remove('display_none')
+        })
+    })
+
     if(overlay)
     overlay.addEventListener('click', function(e){
         promotionMenu.classList.remove('show')
@@ -93,9 +114,43 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelector('.section_menu .overlay').addEventListener('click', function(){
         document.querySelector('.section_menu').classList.remove('show')
+        document.querySelector('.header_actions .hamburg_menu').classList.remove('active')
         document.body.classList.remove('stop_scroll')
         document.querySelector('header').classList.remove('menu_opened')
     })
+
+    let fixedMenuBtn = document.querySelectorAll('.icons .add_btn');
+    fixedMenuBtn.forEach(fixedMenuBtn => {
+        fixedMenuBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('.link_menu').classList.add('show')
+        })
+    })
+    // FIXED MENU CLOSER
+    let fixedCloseBtn = document.querySelectorAll('.menu_closeBtn');
+    fixedCloseBtn.forEach(fixedCloseBtn => {
+        fixedCloseBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('.link_menu').classList.remove('show')
+        })
+    })
+    // Barcha .add_btn elementlarini topamiz
+    var buttons = document.querySelectorAll('.add_btn');
+
+    // Har bir .add_btn elementining o'zini tekshiruv uchun indeksi
+    var currentIndex = 0;
+
+    setInterval(function() {
+        // Birinchi elementni yopib, keyingi elementni ko'rsatamiz
+        buttons[currentIndex].classList.add('hidden');
+        
+        // Keyingi elementni indeksini hisoblaymiz
+        currentIndex = (currentIndex + 1) % buttons.length;
+
+        // Keyingi elementni ochamiz
+        buttons[currentIndex].classList.remove('hidden');
+    }, 2000); // 5 soniyada bir
+
 
     var hero_slide = new Splide( '#hero_slide', {
         gap: 20,
@@ -111,8 +166,22 @@ document.addEventListener("DOMContentLoaded", () => {
     var hero_mobile = new Splide( '#hero_slide_mobile', {
         gap: 10,
         type   : 'loop',
-        perPage: "2",
+        perPage: 3,
         pagination: false,
+        breakpoints: {
+            640: {
+                perPage: 1,
+            },
+            768: {
+                perPage: 1,
+            },
+            1024: {
+                perPage: 2,
+            },
+            1440: {
+                perPage: 2,
+            },
+        },
     });
     hero_mobile.mount()
 
@@ -148,11 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
         pagination: false,
         interval: 3000,
         breakpoints: {
-            375: {
-                perPage: 2,
-                arrows: false,
-                pagination: true
-            },
             768: {
               perPage: 1,
               pagination: true,
@@ -178,27 +242,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }).mount();
 
     var callback_form = new Splide( '#callback_form' ,{
-        type   : 'loop',
+        // type   : 'loop',
         gap: 20,
         perPage: 1,
         pagination: false,
-        interval: 3000,
         breakpoints: {
             640: {
-              perPage: 1,
               pagination: true
-        
             },
             768: {
-              perPage: 1,
               pagination: true,
             },
+            1000:{
+                pagination: true,
+            },
             1024: {
-              perPage: 1,
               pagination: false,
             },
             1440: {
-              perPage: 1,
               pagination: false,
             },
         },
@@ -207,9 +268,23 @@ document.addEventListener("DOMContentLoaded", () => {
     var special_offers = new Splide( '#special_offers' ,{
         type   : 'loop',
         gap: 20,
-        perPage: 2,
+        perPage: 3,
         pagination: false,
         interval: 3000,
+        breakpoints: {
+            768: {
+                perPage: 2,
+                //   pagination: true,
+            },
+            1024: {
+                perPage: 2,
+                pagination: false,
+            },
+            1440: {
+                perPage: 3,
+                pagination: false,
+            },
+        },
     }).mount();
 
     // Получаем все элементы .title_item и .splide__slide
