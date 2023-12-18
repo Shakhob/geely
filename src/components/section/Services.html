@@ -1,0 +1,43 @@
+<script locals>
+  module.exports = {
+    tabs: [
+      { name: "Ремонт", price: "2 000" },
+      { name: "Техническое обслуживание", price: "3 000" },
+      { name: "Диагностика", price: "1 500" },
+      { name: "Кузовной ремонт", price: "1 700" },
+      { name: "Сход-развал", price: "2 500" },
+    ],
+  };
+</script>
+
+<section class="" id="services" x-data="{ activeTab: 0 }">
+  <div class="container first">
+    <div class="section_title">Полный спектр услуг</div>
+  </div>
+
+  <div class="container">
+    <ul class="swiper_titles">
+      <each loop="tab, tabIndex in tabs">
+        <li>
+          <button
+            type="button"
+            class="title_item"
+            :class="{ 'active': activeTab === {{ tabIndex }} }"
+            @click="activeTab = {{ tabIndex }}"
+          >
+            {{ tab.name }}
+          </button>
+        </li>
+      </each>
+    </ul>
+
+    <div class="relative flex flex-col swiper">
+      <each loop="tab, tabIndex in tabs">
+        <c-share.ServiceItem active-tab="{{tabIndex}}">
+          <fill:heading>{{ tab.name }}</fill:heading>
+          <fill:price>{{ tab.price }}</fill:price>
+        </c-share.ServiceItem>
+      </each>
+    </div>
+  </div>
+</section>

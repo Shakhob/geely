@@ -1,0 +1,49 @@
+<script locals>
+  module.exports = {
+    tabs: [
+      { name: "Ремонт", price: "2 000", image: "/images/services1.png" },
+      {
+        name: "Техническое обслуживание",
+        price: "3 000",
+        image: "/images/services2.png",
+      },
+      { name: "Диагностика", price: "1 500", image: "/images/services3.png" },
+      {
+        name: "Кузовной ремонт",
+        price: "1 700",
+        image: "/images/services4.png",
+      },
+      { name: "Сход-развал", price: "2 500", image: "/images/services5.png" },
+    ],
+  };
+</script>
+
+<section class="services_tab" x-data="{ activeTab: null }">
+  <div class="container">
+    <div class="section_title">Полный спектр услуг</div>
+    <div>
+      <!-- Tabs -->
+      <div>
+        <each loop="tab, tabIndex in tabs">
+          <div class="item" :class="{ 'open': activeTab === {{ tabIndex }} }">
+            <button
+              type="button"
+              class="tab_button"
+              :class="{ 'active': activeTab === {{ tabIndex }} }"
+              @click="activeTab = activeTab === {{ tabIndex }} ? null : {{ tabIndex }}"
+            >
+              <span>{{ tab.name }}</span>
+              <c-icons.ChevronDown class="w-4 h-4"></c-icons.ChevronDown>
+            </button>
+            <c-share.ServiceItemMobile active-tab="{{ tabIndex }}">
+              <fill:price>{{ tab.price }}</fill:price>
+              <fill:image>
+                <img src="{{ tab.image }}" alt="" />
+              </fill:image>
+            </c-share.ServiceItemMobile>
+          </div>
+        </each>
+      </div>
+    </div>
+  </div>
+</section>

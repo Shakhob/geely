@@ -1,0 +1,56 @@
+<script props>
+  module.exports = {
+    active: props["active-tab"] || 0,
+  };
+</script>
+
+<div
+  x-show="activeTab === {{ active }}"
+  x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
+  x-transition:enter-start="opacity-0 -translate-y-8"
+  x-transition:enter-end="opacity-100 translate-y-0"
+  x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
+  x-transition:leave-start="opacity-100 translate-y-0"
+  x-transition:leave-end="opacity-0 translate-y-12"
+  class="tab__item"
+>
+  <div class="services_info">
+    <img src="/images/services_bg.png" alt="" class="services_bg" />
+    <form class="servisec_form">
+      <div class="form_title">
+        <slot:heading>Ремонт</slot:heading>
+      </div>
+      <div class="service_price">
+        <span> Стоимость </span>
+        <span>от <slot:price>2 000</slot:price> ₽</span>
+      </div>
+      <div class="inputs">
+        <div class="inputs">
+          <div class="flex justify-start">
+            <input
+              x-model="phoneNumber"
+              x-mask="+7 999 999 99 99"
+              placeholder="+7 000 000 00 00"
+              type="text"
+            />
+          </div>
+          <button type="submit">Оставить заявку</button>
+        </div>
+      </div>
+      <div class="agree">
+        Оставляя заявку вы даёте согласие на обработку ваших
+        <br />
+        <span>Персональных данных</span>
+      </div>
+    </form>
+    <div class="services_img">
+      <img src="/images/services1.png" alt="" />
+    </div>
+  </div>
+  <div class="services_description">
+    Профессиональный ремонт «Geely» включает в себя работы разной направленности
+    по восстановлению нормального функционирования агрегатов и систем
+    автомобиля. От правильности их проведения зависит то, насколько безопасной
+    будет эксплуатация в будущем, а также оптимизация расходов на неё.
+  </div>
+</div>
