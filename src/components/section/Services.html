@@ -1,11 +1,19 @@
 <script locals>
   module.exports = {
     tabs: [
-      { name: "Ремонт", price: "2 000" },
-      { name: "Техническое обслуживание", price: "3 000" },
-      { name: "Диагностика", price: "1 500" },
-      { name: "Кузовной ремонт", price: "1 700" },
-      { name: "Сход-развал", price: "2 500" },
+      { name: "Ремонт", price: "2 000", image: "/images/services1.png" },
+      {
+        name: "Техническое обслуживание",
+        price: "3 000",
+        image: "/images/services2.png",
+      },
+      { name: "Диагностика", price: "1 500", image: "/images/services3.png" },
+      {
+        name: "Кузовной ремонт",
+        price: "1 700",
+        image: "/images/services4.png",
+      },
+      { name: "Сход-развал", price: "2 500", image: "/images/services5.png" },
     ],
   };
 </script>
@@ -33,7 +41,7 @@
 
     <div class="relative flex flex-col swiper">
       <each loop="tab, tabIndex in tabs">
-        <c-share.ServiceItem active-tab="{{tabIndex}}">
+        <c-share.ServiceItem active-tab="{{tabIndex}}" image="{{image}}">
           <fill:heading>{{ tab.name }}</fill:heading>
           <fill:price>{{ tab.price }}</fill:price>
         </c-share.ServiceItem>
