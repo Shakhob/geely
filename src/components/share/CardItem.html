@@ -1,0 +1,24 @@
+<script props>
+  module.exports = {
+    active: props["active-tab"] || 0,
+    image: props["image"] || "/images/car1.png",
+  };
+</script>
+
+<div class="row">
+  <div class="card_title">
+    <slot:heading>EMGRAND</slot:heading>
+    <span>ТО <slot:mileage>60 000</slot:mileage>км</span>
+  </div>
+  <div class="price">
+    <div class="card_price">
+      <span>Цена у нас</span>
+      <span><slot:price>12 000</slot:price> ₽</span>
+    </div>
+    <div class="price_dealer">
+      <span>Цена у дилера</span>
+      <span><slot:dealer_price>25 000</slot:dealer_price> ₽</span>
+    </div>
+  </div>
+</div>
+<img src="{{image}}" alt="">

@@ -41,7 +41,7 @@
 
     <div class="relative flex flex-col swiper">
       <each loop="tab, tabIndex in tabs">
-        <c-share.ServiceItem active-tab="{{tabIndex}}" image="{{image}}">
+        <c-share.ServiceItem active-tab="{{tabIndex}}" image="{{tab.image}}">
           <fill:heading>{{ tab.name }}</fill:heading>
           <fill:price>{{ tab.price }}</fill:price>
         </c-share.ServiceItem>

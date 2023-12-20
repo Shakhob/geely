@@ -1301,12 +1301,12 @@ header .container .header_actions {
   gap: 26px;
 }
 .splide__arrow svg {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 .splide__arrow {
-  width: inherit;
-  height: inherit;
+  width: inherit !important;
+  height: inherit !important;
 }
 .splide__arrows button {
   position: relative;
@@ -1396,6 +1396,14 @@ header .container .header_actions {
 #cards .splide__slide .row .price .card_price {
   padding-right: 24px;
   border-right: 1px solid #c4c8d3;
+}
+#cards .splide__slide .row .card_title{
+  color: #313E48;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px; /* 125% */
+  text-transform: uppercase;
 }
 #cards .splide__slide .row .card_title,
 #cards .splide__slide .row .card_price,
@@ -2153,8 +2161,8 @@ header.menu_opened .container .header_actions .header_phone {
   transform: rotate(0deg);
 }
 #hero_slide_mobile .splide__arrow svg {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 #hero_slide_mobile .splide__arrows.splide__arrows--ltr button img {
   position: relative;
