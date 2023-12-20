@@ -1,17 +1,41 @@
 <script locals>
   module.exports = {
     cards: [
-      { 
+      {
         name: "EMGRAND",
-         price: "12 000",
+        price: "12 000",
         image: "/images/car1.png",
-        dealer_price:'25 000',
-        mileage:'60 00'
+        dealer_price: "25 000",
+        mileage: "60 00",
       },
-      { name: "Coolray", price: "12 000", image: "/images/car2.png",dealer_price:'25 000',mileage:'40 000'},
-      { name: "Atlas pro", price: "12 000 ₽", image: "/images/car3.png",dealer_price:'25 000',mileage:'30 000'},
-      { name: "tugella", price: "2 000", image: "/images/car4.png",dealer_price:'25 000',mileage:'20 000'},
-      { name: "monjaro", price: "2 000", image: "/images/car5.png",dealer_price:'25 000',mileage:'40 000'},
+      {
+        name: "Coolray",
+        price: "12 000",
+        image: "/images/car2.png",
+        dealer_price: "25 000",
+        mileage: "40 000",
+      },
+      {
+        name: "Atlas pro",
+        price: "12 000 ₽",
+        image: "/images/car3.png",
+        dealer_price: "25 000",
+        mileage: "30 000",
+      },
+      {
+        name: "tugella",
+        price: "2 000",
+        image: "/images/car4.png",
+        dealer_price: "25 000",
+        mileage: "20 000",
+      },
+      {
+        name: "monjaro",
+        price: "2 000",
+        image: "/images/car5.png",
+        dealer_price: "25 000",
+        mileage: "40 000",
+      },
     ],
   };
 </script>
@@ -20,15 +44,16 @@
     <div class="section_title">
       <span> Стоимость на ТО ниже, чем у дилера </span>
       <span>
-        В стоимость включены все виды работ, запасные части и все
-        расходные материалы
+        В стоимость включены все виды работ, запасные части и все расходные
+        материалы
       </span>
     </div>
+
     <div class="splide__track">
       <ul class="splide__list">
         <each loop="card, tabIndex in cards">
           <li class="splide__slide">
-            <c-share.CardItem active-tab="{{tabIndex}}" image="{{card.image}}">
+            <c-share.CardItem image="{{card.image}}">
               <fill:heading>{{ card.name }}</fill:heading>
               <fill:mileage>{{ card.mileage }}</fill:mileage>
               <fill:price>{{ card.price }}</fill:price>
@@ -38,6 +63,7 @@
         </each>
       </ul>
     </div>
+
     <div class="splide__arrows">
       <button class="splide__arrow splide__arrow--prev">
         <c-icons.SlideNext></c-icons.SlideNext>

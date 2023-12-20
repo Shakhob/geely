@@ -1,11 +1,8 @@
-<script props>
-    module.exports = {
-      active: props["active-tab"] || 0,
-    };
-</script>
-
 <div class="other_item">
-    <div class="number"><slot:number>12 500</slot:number></div>
-    <span><slot:body>Ремонт</slot:body></span>
+  <div class="number"><slot:number>12 500</slot:number></div>
+  <span>
+    <slot:body>
+      Ремонт
+    </slot:body>
+  </span>
 </div>
-
