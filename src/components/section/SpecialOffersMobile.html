@@ -1,24 +1,26 @@
 <script locals>
   module.exports = {
-    special_offers_mobile: [
-      { name: "Скидка на услуги при первом посещении"},
-      { name: "Бесплатная замена масла при первом ТО"},
-      { name: "Шиномонтаж + сход развал по специальной цене"},
+    items: [
+      { name: "Скидка на услуги при первом посещении" },
+      { name: "Бесплатная замена масла при первом ТО" },
+      { name: "Шиномонтаж + сход развал по специальной цене" },
     ],
   };
 </script>
+
 <section class="special_offers_mobile">
-    <div class="container">
-      <div class="section_title">
-        Специальные <br />
-        предложения
-      </div>
-      <div class="card_block">
-        <each loop="special_offer_mobile, tabIndex in special_offers_mobile">
-          <c-share.SpecialOfferMobileItem active-tab="{{tabIndex}}">
-            <fill:heading>{{ special_offer_mobile.name }}</fill:heading>
-          </c-share.SpecialOfferMobileItem>
-        </each>
-      </div>
+  <div class="container">
+    <h2 class="section_title">
+      Специальные <br />
+      предложения
+    </h2>
+
+    <div class="card_block">
+      <each loop="item in items">
+        <c-share.SpecialOfferMobileItem>
+          <fill:heading>{{ item.name }}</fill:heading>
+        </c-share.SpecialOfferMobileItem>
+      </each>
     </div>
+  </div>
 </section>
